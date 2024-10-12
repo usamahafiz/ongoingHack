@@ -34,7 +34,22 @@ def generate_flowchart(assignment_response, workflow_response):
         dot.edge('C', 'D')
 
         # Generate a temporary file for the flowchart image
-        with tempfile.NamedTemporaryFile(delete
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".png") as tmp_file:
+            flowchart_path = tmp_file.name
+            dot.render(flowchart_path, format='png')
+
+        return flowchart_path
+    except Exception as e:
+        print(f"Error generating flowchart: {str(e)}")
+        return None
+
+def generate_project_structure(assignment_response):
+    # Dummy function to simulate project structure generation
+    return None
+
+def suggest_project_names(client, project_description):
+    # Simulate project name suggestions
+    return "Project name suggestions (dummy)"
 
 
 
